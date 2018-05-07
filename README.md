@@ -1,2 +1,2 @@
 # syncop
-A simple web app for musicians to synchronize audio lyrics and chords. 
+A simple web app for musicians to synchronize audio with lyrics and chords. 
