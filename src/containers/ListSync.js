@@ -5,8 +5,7 @@ import { ListSyncActions } from '../actions'
 const ListSync = ({ dispatch }) => {
 
   return (
-    <div
-    >No synchro to display.
+    <div>No synchro to display.
     </div>
   )
 }

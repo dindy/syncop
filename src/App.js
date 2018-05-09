@@ -11,7 +11,7 @@ class App extends Component {
     return (
       <div className="App">
       	<Header/>
-      	<Route path="/search" component={CreateSync}/>
+      	<Route path="/create" component={CreateSync}/>
       	<Route exact={true} path="/" component={ListSync}/>
       </div>
     );

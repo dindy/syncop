@@ -1,3 +1,5 @@
+import processRawText from './processRawText'
+
 const initialState = {
   search: {
     query: null,
@@ -8,8 +10,13 @@ const initialState = {
   source: {
     id: null,
     provider: 'YouTube'
+  },
+  lyrics: {
+    raw: null,
+    processed: null
   }
 }
+
 const synchro = (state = initialState, action) => {
   switch (action.type) {
     case 'SOURCE_SEARCH_FETCH_DONE':
@@ -26,6 +33,19 @@ const synchro = (state = initialState, action) => {
           id: action.payload.id.videoId
         }
       } 
+    case 'CHANGE_RAW_LYRICS':
+      return {
+        ...state, lyrics: {
+          raw: action.payload,
+          processed: processRawText(state.lyrics.raw)
+        }
+      }    
+    case 'SAVE_RAW_LYRICS':
+      return {
+        ...state, lyrics: {
+          processed: processRawText(state.lyrics.raw)
+        }
+      }         
     default:
       return state
   }
