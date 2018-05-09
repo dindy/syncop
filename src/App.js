@@ -3,7 +3,7 @@ import './App.css';
 import { Route } from 'react-router-dom'
 
 import Header from './components/Header.js'
-import SearchSong from './containers/SearchSong.js'
+import CreateSync from './containers/CreateSync.js'
 import ListSync from './containers/ListSync.js'
 
 class App extends Component {
@@ -11,7 +11,7 @@ class App extends Component {
     return (
       <div className="App">
       	<Header/>
-      	<Route path="/search" component={SearchSong}/>
+      	<Route path="/search" component={CreateSync}/>
       	<Route exact={true} path="/" component={ListSync}/>
       </div>
     );
