@@ -51,7 +51,7 @@ const Header = ({ dispatch, classes }) => {
             	Syncop
           	</Typography>
 			<Route exact={true} path="/" render={renderButtonSearchSource}/>
-			<Route exact={true} path="/create/lyrics" render={buttonSaveRawLyrics}/>
+			<Route exact={true} path="/create/add-lyrics" render={buttonSaveRawLyrics}/>
         </Toolbar>
       </AppBar>
     </div>

@@ -1,0 +1,16 @@
+.lyrics-block {
+	font-size: 1.2em;
+}
+.lyrics-paragraph {
+	margin-bottom: 40px;	
+}
+.lyrics-line {
+	margin: 0.8em 0;
+}
+.char-selected {
+	background-color: lightblue;
+}
+.char-marked {
+	background-color: blue;
+	color: white;
+}

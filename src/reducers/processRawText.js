@@ -6,13 +6,14 @@ const processRawText = (rawText) => {
   const charIsBlank = (char) => char.indexOf(" ") != -1
   let paragraphCounter = 1 
   let lineBreakCounter = 1
+  let characterCounter = 0
 
   return [...(rawText.trim())] // Trim text and turns it to an array of all the characters
 
     // Clean characters 
     .reduce((chars, char, index, original) => {
       
-      // Get previous chars (in the cumulator)
+      // Get previous chars (in the accumulator)
       const prevChar = typeof chars === 'undefined' || chars.length == 0 ? '' : chars[chars.length - 1] || ''
       const prevPrevChar = typeof chars === 'undefined' || chars.length <= 1  ? '' : chars[chars.length - 2] || ''
       
@@ -49,11 +50,19 @@ const processRawText = (rawText) => {
           return {toDelete: true}
         }
       } else {
-        return {value: char, paragraph: paragraphCounter, line: lineBreakCounter}
+        characterCounter++
+        return {
+          id: paragraphCounter + '-' + lineBreakCounter + '-' + characterCounter, 
+          value: char, 
+          paragraph: paragraphCounter, 
+          line: lineBreakCounter,
+          isSelected: false,
+          mark: null
+        }
       }
 
     })
-    
+
     // Filters breaklines
     .filter((charObj) => !charObj.hasOwnProperty('toDelete'))
 }
