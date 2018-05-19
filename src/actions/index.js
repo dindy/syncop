@@ -59,3 +59,8 @@ export const updateLastClickPosition = (coordinates) => (dispatch) => dispatch({
 	type: 'UPDATE_LAST_CLICK_POSITION', 
 	payload: coordinates
 })
+
+export const updateScrollY = (y) => (dispatch) => dispatch({
+	type: 'SCROLL_Y', 
+	payload: y
+})

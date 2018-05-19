@@ -24,9 +24,7 @@ class MarkLyrics extends Component {
 	}
 
 	handleScroll(event) {
-	    // this.setState({
-	    //   transform: Math.random().toString(10).substr(2, 4)
-	    // });
+		this.props.updateScrollY(window.scrollY)
 	}
 
 	renderParagraphs(optimizedLyrics) {

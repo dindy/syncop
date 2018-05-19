@@ -12,7 +12,8 @@ import {
 	expandRightLyricsCharSelection,
 	expandLeftLyricsCharSelection,
 	markLyricsCharSelection,
-	updateLastClickPosition
+	updateLastClickPosition,
+	updateScrollY
 } from '../actions'
 
 
@@ -28,7 +29,8 @@ const CreateSync = ({
 	markLyricsCharSelection,
 	updateLastClickPosition,
 	rawLyrics,
-	optimizedLyrics
+	optimizedLyrics,
+	updateScrollY
 }) => {
 
 	const renderSearchSource = () => (
@@ -55,6 +57,7 @@ const CreateSync = ({
 			markLyricsCharSelection={ markLyricsCharSelection }
 			updateLastClickPosition={ updateLastClickPosition }
 			optimizedLyrics={ optimizedLyrics }
+			updateScrollY={ updateScrollY }
 		/> 
 	)
 
@@ -83,6 +86,7 @@ const mapDispatchToProps = dispatch => ({
 	expandLeftLyricsCharSelection: () => dispatch(expandLeftLyricsCharSelection()),
 	markLyricsCharSelection: () => dispatch(markLyricsCharSelection()),
 	updateLastClickPosition: (coords) => dispatch(updateLastClickPosition(coords)),
+	updateScrollY: (y) => dispatch(updateScrollY(y)),
 })
 
 export default connect(

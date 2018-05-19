@@ -99,7 +99,8 @@ const initialState = {
       x: null, 
       y: null
     },
-    lastUpdates: []
+    lastUpdates: [],
+    scrollY: 0
   }
 }
 
@@ -224,9 +225,19 @@ const synchro = (state = initialState, action) => {
       return {
         ...state, lyrics: {
           ...state.lyrics,
-          lastClickCoords: action.payload
+          lastClickCoords: {
+            ...action.payload,
+            y: action.payload.y + state.lyrics.scrollY
+          }
         }        
-      }                   
+      }           
+    case 'SCROLL_Y':
+      return {
+        ...state, lyrics: {
+          ...state.lyrics,
+          scrollY: action.payload
+        }        
+      }        
     default:
       return state
   }
