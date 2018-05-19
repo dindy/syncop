@@ -1,4 +1,4 @@
-const processRawText = (rawText) => {
+export const processRawText = (rawText) => {
 
   if (rawText == null) return null
 
@@ -7,6 +7,7 @@ const processRawText = (rawText) => {
   let paragraphCounter = 1 
   let lineBreakCounter = 1
   let characterCounter = 0
+  let lineIndexInParagraphCounter = 0
 
   return [...(rawText.trim())] // Trim text and turns it to an array of all the characters
 
@@ -44,9 +45,11 @@ const processRawText = (rawText) => {
       if ( charIsBreakLine(char) ) {
         if ( charIsBreakLine(prevChar) ) {
           paragraphCounter++
+          lineIndexInParagraphCounter = 0
           return {toDelete: true}
         } else {
           lineBreakCounter++
+          lineIndexInParagraphCounter++
           return {toDelete: true}
         }
       } else {
@@ -56,8 +59,10 @@ const processRawText = (rawText) => {
           value: char, 
           paragraph: paragraphCounter, 
           line: lineBreakCounter,
+          lineIndexInParagraph: lineIndexInParagraphCounter,
           isSelected: false,
-          mark: null
+          mark: null,
+          index: characterCounter - 1,
         }
       }
 
@@ -67,4 +72,28 @@ const processRawText = (rawText) => {
     .filter((charObj) => !charObj.hasOwnProperty('toDelete'))
 }
 
-export default processRawText
+export const optimizeProcessedText = (processedText) => {
+
+  const paragraphs = Object.values(groupBy(processedText, 'paragraph'))
+    .map(paragraph => Object.values(groupBy(paragraph, 'line'))
+      // .map(line => line
+      //   .map(character => character)
+      // )
+    )
+
+  return paragraphs
+}
+
+const groupBy = (items, key) => items.reduce(
+  (result, item) => ({
+    ...result,
+    [item[key]]: [
+      ...(result[item[key]] || []),
+      item,
+    ],
+  }), 
+  {},
+);
+
+
+

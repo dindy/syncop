@@ -16,12 +16,14 @@ const styles = theme => ({
 
 const AddLyrics = ({ 
 	classes,
-	changeRawLyrics
+	changeRawLyrics,
+	rawLyrics
 }) => {
 	return (
 	    <form className={classes.container} noValidate autoComplete="off">		
 	        <TextField
 	          id="multiline-flexible"
+	          value={ rawLyrics }
 	          label="Multiline"
 	          multiline
 	          className={ classes.textField }

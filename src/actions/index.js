@@ -54,3 +54,8 @@ export const markLyricsCharSelection = () => (dispatch) => dispatch({
 	type: 'MARK_LYRICS_CHAR_SELECTION', 
 	payload: null
 })
+
+export const updateLastClickPosition = (coordinates) => (dispatch) => dispatch({
+	type: 'UPDATE_LAST_CLICK_POSITION', 
+	payload: coordinates
+})
